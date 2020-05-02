@@ -57,24 +57,33 @@ def run(filename):
             c = copy.deepcopy (stack[-1])
             stack.append (c)
         elif op == 'move':
-            make_translate (args[0], args[1], args[2])
+            t = make_translate (args[0], args[1], args[2])
+            matrix_mult (stack[-1], t)
+            c = copy.deepcopy (t)
+            stack[-1] = t
         elif op == 'rotate':
             xyz = args[0]
             degree = args[1]
             if xyz == 'x':
-                make_rotX (degree)
+                t = make_rotX (degree)
             elif xyz == 'y':
-                make_rotY (degree)
+                t = make_rotY (degree)
             else:
-                make_rotZ (degree)
+                t = make_rotZ (degree)
+            matrix_mult (stack[-1], t)
+            c = copy.deepcopy (t)
+            stack[-1] = t
         elif op == 'scale':
-            make_scale (args[0], args[1], args[2])
+            t = make_scale (args[0], args[1], args[2])
+            matrix_mult (stack[-1], t)
+            c = copy.deepcopy (t)
+            stack[-1] = t
         elif op == 'box':
             constant = command['constants']
             add_box(tmp,
                     float(args[0]), float(args[1]), float(args[2]),
                     float(args[3]), float(args[4]), float(args[5]))
-            matrix_mult( stack[-1], coords )
+            matrix_mult( stack[-1], tmp )
             if constant == None:
                 draw_polygons(tmp, screen, zbuffer, view, ambient, light, symbols, reflect)
             else:
@@ -85,7 +94,7 @@ def run(filename):
             add_sphere(tmp,
                        float(args[0]), float(args[1]), float(args[2]),
                        float(args[3]), step_3d)
-            matrix_mult( stack[-1], coords )
+            matrix_mult( stack[-1], tmp )
             if constant == None:
                 draw_polygons(tmp, screen, zbuffer, view, ambient, light, symbols, reflect)
             else:
@@ -96,18 +105,17 @@ def run(filename):
             add_torus(tmp,
                       float(args[0]), float(args[1]), float(args[2]),
                       float(args[3]), float(args[4]), step_3d)
-            matrix_mult( stack[-1], coords )
+            matrix_mult( stack[-1], tmp )
             if constant == None:
                 draw_polygons(tmp, screen, zbuffer, view, ambient, light, symbols, reflect)
             else:
                 draw_polygons(tmp, screen, zbuffer, view, ambient, light, symbols, constant)
             tmp = []
         elif op == 'line':
-            print (line)
             add_edge( tmp,
                       float(args[0]), float(args[1]), float(args[2]),
                       float(args[3]), float(args[4]), float(args[5]) )
-            matrix_mult( stack[-1], edges )
+            matrix_mult( stack[-1], tmp )
             draw_lines(tmp, screen, zbuffer, color)
             tmp = []
         elif(op == 'save'):
