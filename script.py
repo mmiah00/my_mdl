@@ -63,7 +63,7 @@ def run(filename):
             stack[-1] = t
         elif op == 'rotate':
             xyz = args[0]
-            degree = args[1]
+            degree = args[1] * (math.pi / 180)
             if xyz == 'x':
                 t = make_rotX (degree)
             elif xyz == 'y':
