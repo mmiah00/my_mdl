@@ -4,7 +4,7 @@ Items seperated by | means you must choose one of them in an input line.
 Items enclosed in [] are optional.
 
 For example, rotate is specified as:
-rotate x|y|z degress [knob]
+rotate x|y|z degrees [knob]
 
 The following would be valid rotations:
 rotate x 20
@@ -36,8 +36,8 @@ All transformations will operate as follows:
 move x y z [knob]		- translate
 scale x y z [knob]		- scale
 rotate x|y|z degrees [knob]	- rotate (note that you can only
-				  specify one axis, x, y, or z per
-				  rotation instruction)
+				  														specify one axis, x, y, or z per
+				  														rotation instruction)
 
 Image creation
 --------------
@@ -98,9 +98,9 @@ setknobs value		- set all the knobs to value
 
 Lighting
 --------
-light r g b x y z  	- creates a "light" datastructure with rgb values
-			  r,g,b at location x,y,z.
-			  This is inserted into the symbol table.
+light r g b x y z  	- creates a "light" data structure with rgb values
+			  							r,g,b at location x,y,z.
+			  							This is inserted into the symbol table.
 
 ambient r g b 		- specifies how much ambient light is in the scene
 
@@ -111,29 +111,29 @@ constants name kar kdr ksr kag kdg ksg kab kdb ksb [r] [g] [b]
 			  default to 0.
 
 shading wireframe|flat|gouraud|phong|raytrace
-			- set the shading mode
+				- set the shading mode
 
 
 MISC
 ----
-//			- comment to the end of a line, just like c++
-save_coord_system name
-			- Makes a copy of the top of the stack and
-			  saves it in the symbol table under "name."
+//																		- comment to the end of a line, just like c++
 
-camera eye aim		- establishes a camera. Eye and aim are
-			  x y z triples.
+save_coord_system name								- Makes a copy of the top of the stack and
+																				saves it in the symbol table under "name."
+
+camera eye aim												- establishes a camera. Eye and aim are
+			  																x y z triples.
 
 
-save filename		- save the image in its current state under
-			  the name "filename."
+save filename													- save the image in its current state under
+			  																the name "filename."
 
-gereate_rayfiles	- Instruct the interpreter to generate source
-			  files for a ray tracer for each frame rendered.
+gereate_rayfiles											- Instruct the interpreter to generate source
+			  																files for a ray tracer for each frame rendered.
 
-focal value		- set the focal length of the camera
+focal value														- set the focal length of the camera
 
-display			- display the current image on the screen
+display																- display the current image on the screen
 
 
 LEX & BISON NOTES
