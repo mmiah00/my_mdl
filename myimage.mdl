@@ -1,0 +1,17 @@
+constants yellow 0.2 0.6 0.1 0.2 0.6 0.1 0 0 0
+push
+move 250 250 0
+rotate x 45
+rotate y 30
+rotate z -45
+push
+sphere yellow 0 0 0 100
+torus yellow 0 0 0 2.5 150
+torus yellow 0 0 0 2.5 155
+torus yellow 0 0 0 2.5 160
+torus yellow 0 0 0 2.5 165
+torus yellow 0 0 0 2.5 170
+torus yellow 0 0 0 2.5 175
+torus yellow 0 0 0 2.5 180
+display
+save saturn.png
